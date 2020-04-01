@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "battlebuddy-17736": {
+      "hosting": {
+        "angular-electron": [
+          "battlebuddy-17736"
+        ]
+      }
+    }
+  }
+}

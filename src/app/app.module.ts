@@ -21,6 +21,11 @@ import { MainModule } from "./main/main.module";
 
 import { AppComponent } from "./app.component";
 
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AppConfig } from "../environments/environment";
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -29,6 +34,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    AngularFireModule.initializeApp(AppConfig.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

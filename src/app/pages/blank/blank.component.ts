@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { RifleService } from "../../services/rifle.service";
 
 @Component({
   selector: "app-blank",
@@ -6,7 +7,14 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./blank.component.scss"]
 })
 export class BlankComponent implements OnInit {
-  constructor() {}
+  asval = {};
+
+  constructor(private rifleService: RifleService) {
+    this.rifleService.getRifelData("r7Xekq5JtKXISgTDsuU9").subscribe(rifle => {
+      console.debug("RIFLE: ", rifle);
+      this.asval = rifle;
+    });
+  }
 
   ngOnInit(): void {}
 }
