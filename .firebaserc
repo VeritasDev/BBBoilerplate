@@ -1,9 +1,9 @@
 {
   "targets": {
-    "battlebuddy-17736": {
+    "battlebuddy-e0530": {
       "hosting": {
         "angular-electron": [
-          "battlebuddy-17736"
+          "battlebuddy-e0530"
         ]
       }
     }

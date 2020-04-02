@@ -7,12 +7,9 @@ import { RifleService } from "../../services/rifle.service";
   styleUrls: ["./blank.component.scss"]
 })
 export class BlankComponent implements OnInit {
-  asval = {};
-
   constructor(private rifleService: RifleService) {
-    this.rifleService.getRifelData("r7Xekq5JtKXISgTDsuU9").subscribe(rifle => {
+    this.rifleService.getAllAmmo().subscribe(rifle => {
       console.debug("RIFLE: ", rifle);
-      this.asval = rifle;
     });
   }
 

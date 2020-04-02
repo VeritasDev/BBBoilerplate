@@ -3,18 +3,21 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import "firebase/firestore";
+import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: "root"
-})
+@Injectable({providedIn: "root"})
+
 export class RifleService {
   constructor(private firestore: AngularFirestore) {}
 
-  getRifelData(rifleId: string): Observable<any> {
+  getAllAmmo(): Observable<any> {
     return this.firestore
-      .collection("rifles")
-      .doc(rifleId)
-      .get()
-      .pipe(switchMap(rifle => of(rifle.data())));
+      .collection("ammunition")
+      .snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { };
+        })))
   }
 }
